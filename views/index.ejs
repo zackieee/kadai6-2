@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script language="javascript" type="text/javascript">
+      const url = 'https://6f07da5bcf83.ngrok.io';
+      function OnButtonClick1() {
+        const method = "POST";
+        const headers = {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+        };
+        fetch(url, {method, headers})
+          .then(async (response) => {
+            if(response.ok) { // ステータスがokならば
+              const responseJson = await response.json();
+              console.log(responseJson);
+              const view = `
+                <input type="button" value="シンプルリクエスト" onclick="OnButtonClick1();"/>
+                　結果:${responseJson.result}</br>`;
+              const result1 = document.getElementById("result1");
+              result1.innerHTML = view;
+            } else {
+              throw new Error('API側でエラーが発生したっっぽいよ');
+            }
+          })
+          .then((text) => console.log(text))
+          .catch((error) => {
+            console.log(error);
+            const view = `
+            <input type="button" value="シンプルリクエスト" onclick="OnButtonClick1();"/>
+            　エラー発生：${error}`;
+            const result = document.getElementById("result1");
+              result.innerHTML = view;
+          });
+      }
+
+      function OnButtonClick2() {
+        const method = "POST";
+        const headers = {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json; charset=utf-8'
+        };
+        fetch(url, {method, headers})
+          .then(async (response) => {
+            if(response.ok) { // ステータスがokならば
+              const responseJson = await response.json();
+              console.log(responseJson);
+              const view = `
+                <input type="button" value="プリフライトが必要" onclick="OnButtonClick2();"/>
+                　結果:${responseJson.result}</br>`;
+              const result = document.getElementById("result2");
+              result.innerHTML = view;
+            } else {
+              console.log('API側でエラーが発生したっっぽいよ');
+            }
+          })
+          .then((text) => console.log(text))
+          .catch((error) => {
+            console.log(error);
+            const view = `
+                <input type="button" value="プリフライトが必要" onclick="OnButtonClick2();"/>
+                　エラー発生：${error}`;
+            const result = document.getElementById("result2");
+              result.innerHTML = view;
+          });
+      }
+
+      function OnButtonClick3() {
+        const method = "PUT";
+        const headers = {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json; charset=utf-8'
+        };
+        fetch(url, {method, headers})
+          .then(async (response) => {
+            if(response.ok) { // ステータスがokならば
+              const responseJson = await response.json();
+              console.log(responseJson);
+              const view = `
+                <input type="button" value="プリフライトが必要" onclick="OnButtonClick3();"/>
+                　結果:${responseJson.result}</br>`;
+              const result = document.getElementById("result3");
+              result.innerHTML = view;
+            } else {
+              console.log('API側でエラーが発生したっっぽいよ');
+            }
+          })
+          .then((text) => console.log(text))
+          .catch((error) => {
+            console.log(error);
+            const view = `
+              <input type="button" value="PUTメソッドの送信" onclick="OnButtonClick3();"/>
+              　エラー発生：${error}`;
+            const result = document.getElementById("result3");
+              result.innerHTML = view;
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p>ホスト名: <%= host %></p>
+    <div id="result1">
+      <input type="button" value="シンプルリクエスト" onclick="OnButtonClick1();"/>
+    </div>
+    <div id="result2">
+      <input type="button" value="プリフライトが必要" onclick="OnButtonClick2();"/>
+    </div>
+    <div id="result3">
+      <input type="button" value="PUTメソッドの送信" onclick="OnButtonClick3();"/>
+    </div>
+  </body>
+</html>
