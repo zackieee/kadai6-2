@@ -38,9 +38,13 @@
 
       function OnButtonClick2() {
         const method = "POST";
+        const body = {
+          'hoge': 'hoge'
+        }
         const headers = {
           'Accept': 'application/json',
-          'Content-Type': 'application/json; charset=utf-8'
+          'Content-Type': 'application/json; charset=utf-8',
+          'body': body
         };
         fetch(url, {method, headers})
           .then(async (response) => {
