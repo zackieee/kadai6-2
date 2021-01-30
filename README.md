@@ -9,19 +9,12 @@ CORSを理解する クライアント側プログラム
 npm install
 ```
 
-3. 下記urlへの代入URLをngorkで実行中のURLに変更する(kadai6リポジトリのREADME.md実施時に控えたURL)  
-[kadai6-2]>[views]>[index.ejs] 7行目  
-
-```
-const url = 'https://6f07da5bcf83.ngrok.io';
-```
-
-4. 下記コマンド実行
+3. 下記コマンド実行
 ```
 $ node ./bin/www
 ```
 
-5. ブラウザで`http://localhost:3001`にアクセスする  
+4. ブラウザで`http://localhost:3001`にアクセスする  
 
 ## ボタン押下時の動作について  
 `http://localhost:3001`ページ表示時の動作  
